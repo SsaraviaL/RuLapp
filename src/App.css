@@ -1,0 +1,359 @@
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #154576;
+  background-color: #FFFFFF;
+}
+
+/* Barra de navegación */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 6%;
+  background-color: #154576;
+}
+
+.navbar-logo {
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.navbar-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+/* Página de inicio */
+.home-container {
+  width: 100%;
+  padding: 50px 20px;
+}
+
+.home-hero {
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.home-hero h1 {
+  color: #154576;
+  font-size: 2.5rem;
+}
+
+.home-hero p {
+  color: #546A82;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.button-primary {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 24px;
+  background-color: #16AB64;
+  color: #FFFFFF;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.button-primary:hover {
+  background-color: #09B089;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar-links {
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .home-hero h1 {
+    font-size: 2rem;
+  }
+}
+
+
+.reservations-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin: 30px auto;
+  text-align: left;
+}
+
+.reservation-card {
+  background-color: #ffffff;
+  border: 1px solid #e2eaed;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.reservation-card h2 {
+  color: #154576;
+  font-size: 21px;
+}
+
+.reservation-card p {
+  color: #546a82;
+  line-height: 1.6;
+}
+
+
+
+/* Página Mi perfil */
+.profile-container {
+  width: 90%;
+  max-width: 650px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.profile-description {
+  color: #546a82;
+  font-size: 18px;
+  margin-bottom: 28px;
+}
+
+.profile-form {
+  background-color: #ffffff;
+  border: 1px solid #e2eaed;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.profile-field label {
+  color: #154576;
+  font-weight: bold;
+}
+
+.profile-field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b8c6d1;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.profile-field input:focus {
+  outline: 2px solid #154576;
+  outline-offset: 2px;
+}
+
+.profile-button {
+  width: 100%;
+  padding: 13px;
+  background-color: #16ab64;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile-button:hover {
+  background-color: #128b52;
+}
+
+.profile-message {
+  margin-top: 18px;
+  color: #154576;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .profile-container {
+    width: 92%;
+    margin: 25px auto;
+  }
+
+  .profile-form {
+    padding: 20px;
+  }
+}
+
+
+
+/* Buscador de rutas */
+.routes-page {
+  padding: 40px 6%;
+}
+
+.page-description {
+  color: #546a82;
+  margin-bottom: 28px;
+}
+
+.search-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e2eaed;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(21, 69, 118, 0.08);
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #154576;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.form-group input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #b9cbd8;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.form-group input:focus {
+  outline: 2px solid #16ab64;
+  outline-offset: 2px;
+}
+
+.search-form .button-primary {
+  align-self: end;
+  min-height: 44px;
+}
+
+.route-results {
+  max-width: 1100px;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.route-results h2 {
+  color: #154576;
+  margin-bottom: 20px;
+}
+
+.routes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.route-card {
+  padding: 24px;
+  border: 1px solid #e2eaed;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(21, 69, 118, 0.08);
+}
+
+.route-card h3 {
+  color: #154576;
+  margin-top: 0;
+}
+
+.route-card p {
+  color: #546a82;
+  margin: 10px 0;
+}
+
+.route-card .button-primary {
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .routes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .routes-page {
+    padding: 28px 5%;
+  }
+}
+
+/* confirmacion reserva boton */
+.selected-route {
+  max-width: 700px;
+  margin: 24px auto;
+}
+
+.selected-route h2 {
+  color: #154576;
+}
+
+.confirmation-message {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid #16ab64;
+  border-radius: 8px;
+  background-color: #f0fff6;
+}
+
+.confirmation-message h3 {
+  color: #087b46;
+}
+
+.confirmation-message p {
+  color: #546a82;
+  line-height: 1.6;
+}
+
+.confirmation-message .button-primary {
+  margin-top: 10px;
+}
