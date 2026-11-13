@@ -8,7 +8,7 @@ function RoutesPage() {
   const [fecha, setFecha] = useState("");
   const [busquedaRealizada, setBusquedaRealizada] = useState(false);
 
-  const [mensaje, setMensaje] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   // Rutas de ejemplo para probar la interfaz
