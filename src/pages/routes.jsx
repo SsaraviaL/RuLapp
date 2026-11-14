@@ -43,7 +43,9 @@ function RoutesPage() {
   ];
 
   function buscarRutas(evento) {
+    
     evento.preventDefault();
+    console.log("Se ejecutó la búsqueda");
 
     setMensaje("");
     setBusquedaRealizada(true);
