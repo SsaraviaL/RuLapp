@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import RouteCard from "../components/RouteCard";
 
 function RoutesPage() {
   const [origen, setOrigen] = useState("");
@@ -136,42 +137,17 @@ const resultados = rutasDisponibles.filter((ruta) => {
           {resultados.length > 0 ? (
             <div className="routes-grid">
               {resultados.map((ruta) => (
-                <article className="route-card" key={ruta.id}>
-                  <h3>
-                    {ruta.origen} → {ruta.destino}
-                  </h3>
-
-                  <p>
-                    <strong>Fecha:</strong> {ruta.fecha}
-                  </p>
-                  <p>
-                    <strong>Hora:</strong> {ruta.hora}
-                  </p>
-                  <p>
-                    <strong>Precio:</strong>{" "}
-                    {ruta.precio.toLocaleString("es-CO", {
-                      style: "currency",
-                      currency: "COP",
-                      maximumFractionDigits: 0,
-                    })}
-                  </p>
-                  <p>
-                    <strong>Cupos disponibles:</strong> {ruta.cupos}
-                  </p>
-
-                  <button
-                    className="button-primary"
-                    type="button"
-                    onClick={() =>
-                      navigate("/reservations", {
-                        state: { ruta },
-                      })
-                    }
-                  >
-                    Seleccionar ruta
-                  </button>
-                </article>
-              ))}
+                <RouteCard
+                  key={ruta.id}
+                  ruta={ruta}
+                  onSeleccionar={(rutaSeleccionada) =>
+                    navigate("/reservations", {
+                     state: { ruta: rutaSeleccionada },
+      })
+    }
+  />
+))}
+              ))
             </div>
           ) : (
             <p>
