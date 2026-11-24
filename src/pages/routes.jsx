@@ -43,13 +43,18 @@ function RoutesPage() {
   ];
 
   function buscarRutas(evento) {
-    
-    evento.preventDefault();
-    console.log("Se ejecutó la búsqueda");
+  evento.preventDefault();
 
-    setMensaje("");
-    setBusquedaRealizada(true);
+  setError("");
+
+  if (normalizarTexto(origen) === normalizarTexto(destino)) {
+    setError("El origen y el destino no pueden ser iguales.");
+    setBusquedaRealizada(false);
+    return;
   }
+
+  setBusquedaRealizada(true);
+}
 
   
 const normalizarTexto = (texto) =>
@@ -118,6 +123,11 @@ const resultados = rutasDisponibles.filter((ruta) => {
           Buscar
         </button>
       </form>
+      {error && (
+  <p className="error-message" role="alert">
+    {error}
+  </p>
+)}
 
       {busquedaRealizada && (
         <section className="route-results" aria-live="polite">
