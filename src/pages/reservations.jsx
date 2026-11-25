@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import ReservationCard from "../components/ReservationCard";
 
 function Reservations() {
   const location = useLocation();
@@ -103,22 +104,13 @@ function Reservations() {
       <h2>Reservas de ejemplo</h2>
 
       <div className="routes-grid">
-        {reservasEjemplo.map((reserva) => (
-          <article className="route-card" key={reserva.id}>
-            <h3>
-              {reserva.origen} → {reserva.destino}
-            </h3>
-
-            <p>
-              <strong>Fecha:</strong> {reserva.fecha}
-            </p>
-
-            <p>
-              <strong>Estado:</strong> {reserva.estado}
-            </p>
-          </article>
-        ))}
-      </div>
+  {reservasEjemplo.map((reserva) => (
+    <ReservationCard
+      key={reserva.id}
+      reserva={reserva}
+    />
+  ))}
+</div>
     </main>
   );
 }
