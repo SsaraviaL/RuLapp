@@ -357,3 +357,27 @@ body {
 .confirmation-message .button-primary {
   margin-top: 10px;
 }
+
+
+
+.app-message {
+  padding: 12px 16px;
+  margin-top: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.app-message-success {
+  background-color: #e6f5ec;
+  color: #176b3a;
+}
+
+.app-message-error {
+  background-color: #fdeaea;
+  color: #a12626;
+}
+
+.app-message-info {
+  background-color: #eaf2fa;
+  color: #154576;
+}

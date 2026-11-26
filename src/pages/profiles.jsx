@@ -1,5 +1,7 @@
 
+import Message from "../components/Message";
 import { useState } from "react";
+import FormInput from "../components/FormInput";
 
 function Profile() {
   const [form, setForm] = useState({
@@ -11,13 +13,11 @@ function Profile() {
 
   const [mensaje, setMensaje] = useState("");
 
-  function handleChange(event) {
-    const { name, value } = event.target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
+  function actualizarCampo(campo, valor) {
+    setForm((anterior) => ({
+      ...anterior,
+      [campo]: valor,
+    }));
 
     setMensaje("");
   }
@@ -50,7 +50,9 @@ function Profile() {
       return;
     }
 
-    setMensaje("Datos validados correctamente. pero no conectados a la base de datos.");
+    setMensaje(
+      "Datos validados correctamente. No están conectados a la base de datos."
+    );
   }
 
   return (
@@ -62,76 +64,68 @@ function Profile() {
       </p>
 
       <form className="profile-form" onSubmit={handleSubmit} noValidate>
-        <div className="profile-field">
-          <label htmlFor="nombre">Nombre completo</label>
-          <input
-            id="nombre"
-            name="nombre"
-            type="text"
-            value={form.nombre}
-            onChange={handleChange}
-            placeholder="Ingresa tu nombre completo"
-            maxLength={100}
-            autoComplete="name"
-            required
-          />
-        </div>
+        <FormInput
+          label="Nombre completo"
+          id="nombre"
+          value={form.nombre}
+          onChange={(valor) => actualizarCampo("nombre", valor)}
+          placeholder="Ingresa tu nombre completo"
+          maxLength={100}
+          autoComplete="name"
+          required
+          className="profile-field"
+        />
 
-        <div className="profile-field">
-          <label htmlFor="correo">Correo electrónico</label>
-          <input
-            id="correo"
-            name="correo"
-            type="email"
-            value={form.correo}
-            onChange={handleChange}
-            placeholder="ejemplo@correo.com"
-            maxLength={150}
-            autoComplete="email"
-            required
-          />
-        </div>
+        <FormInput
+          label="Correo electrónico"
+          id="correo"
+          type="email"
+          value={form.correo}
+          onChange={(valor) => actualizarCampo("correo", valor)}
+          placeholder="ejemplo@correo.com"
+          maxLength={150}
+          autoComplete="email"
+          required
+          className="profile-field"
+        />
 
-        <div className="profile-field">
-          <label htmlFor="documento">Número de documento</label>
-          <input
-            id="documento"
-            name="documento"
-            type="text"
-            inputMode="numeric"
-            value={form.documento}
-            onChange={handleChange}
-            placeholder="Ingresa tu documento"
-            maxLength={15}
-            required
-          />
-        </div>
+        <FormInput
+          label="Número de documento"
+          id="documento"
+          value={form.documento}
+          onChange={(valor) => actualizarCampo("documento", valor)}
+          placeholder="Ingresa tu documento"
+          maxLength={15}
+          inputMode="numeric"
+          required
+          className="profile-field"
+        />
 
-        <div className="profile-field">
-          <label htmlFor="telefono">Número de teléfono</label>
-          <input
-            id="telefono"
-            name="telefono"
-            type="tel"
-            inputMode="numeric"
-            value={form.telefono}
-            onChange={handleChange}
-            placeholder="Ingresa tu teléfono"
-            maxLength={15}
-            autoComplete="tel"
-            required
-          />
-        </div>
+        <FormInput
+          label="Número de teléfono"
+          id="telefono"
+          type="tel"
+          value={form.telefono}
+          onChange={(valor) => actualizarCampo("telefono", valor)}
+          placeholder="Ingresa tu teléfono"
+          maxLength={15}
+          inputMode="numeric"
+          autoComplete="tel"
+          required
+          className="profile-field"
+        />
 
         <button className="profile-button" type="submit">
           Validar datos
         </button>
 
         {mensaje && (
-          <p className="profile-message" role="status" aria-live="polite">
-            {mensaje}
-          </p>
-        )}
+          <Message
+            type={mensaje.startsWith("Datos validados") ? "success" : "error"}
+  >
+    {mensaje}
+  </Message>
+)}
       </form>
     </main>
   );

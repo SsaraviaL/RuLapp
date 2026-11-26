@@ -1,81 +1,81 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+
+import Message from "../components/Message";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import FormInput from "../components/FormInput";
 
 function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [mensaje, setMensaje] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  function handleSubmit(event) {
+    event.preventDefault();
+    setError("");
 
-    setError('')
-    setMensaje('')
-
-    if (!email || !password) {
-      setError('Por favor, complete todos los campos.')
-      return
+    if (!email.trim() || !password.trim()) {
+      setError("Por favor, complete todos los campos.");
+      return;
     }
 
-    navigate('/home')
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Ingrese un correo electrónico válido.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
+
+    navigate("/home");
   }
 
   return (
-    <div>
+    <main className="home-container">
       <h1>Iniciar sesión</h1>
 
-      <p>Bienvenido a RuLapp</p>
+      <p className="page-description">
+        Bienvenido a RuLapp.
+      </p>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="profile-form" noValidate>
+        <FormInput
+          label="Correo electrónico"
+          id="email"
+          type="email"
+          value={email}
+          onChange={setEmail}
+          placeholder="Ingrese su correo"
+          autoComplete="email"
+          required
+        />
 
-        <div>
-          <label htmlFor="email">
-            Correo electrónico
-          </label>
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="Ingrese su correo"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="password">
-            Contraseña
-          </label>
-
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            placeholder="Ingrese su contraseña"
-          />
-        </div>
+        <FormInput
+          label="Contraseña"
+          id="password"
+          type="password"
+          value={password}
+          onChange={setPassword}
+          placeholder="Ingrese su contraseña"
+          autoComplete="current-password"
+          required
+        />
 
         {error && (
-          <p>{error}</p>
-        )}
+          <Message type="error">
+            {error}
+        </Message>
+)}
 
-        {mensaje && (
-          <p>{mensaje}</p>
-        )}
-
-        <button type="submit">
+        <button className="button-primary" type="submit">
           Ingresar
         </button>
-
       </form>
-    </div>
-  )
+    </main>
+  );
 }
 
-export default Login
+export default Login;
